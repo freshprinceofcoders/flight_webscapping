@@ -6,7 +6,7 @@ from flight_fare import FlightFare
 def getFlightData(inputData):
     
    
-    trip =  inputData['ticketType']
+    
     source = inputData['origin']
     destination = inputData['destination']
     departureDate = inputData['departureDate']
@@ -21,7 +21,7 @@ def getFlightData(inputData):
     # fileObj.close()
 
     #url = f"https://api.flightapi.io/{trip}/620fd0a4853d6d634dae50e2/{source}/{destination}/{departureDate}/2/0/1/{seatType}/GBP"
-    url = f"https://api.flightapi.io/roundtrip/620fd0a4853d6d634dae50e2/{source}/{destination}/{departureDate}/{returnDate}/1/0/0/{seatType}/GBP"
+    url = f"https://api.flightapi.io/roundtrip/625f10539e758c054da758c9/{source}/{destination}/{departureDate}/{returnDate}/1/0/0/{seatType}/GBP"
 
 
    
