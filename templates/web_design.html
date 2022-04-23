@@ -1,68 +1,67 @@
 <title>the error fare </title>
 
-
-<h1>Welcome to the error fare website </h1>
+<center>
+  <h1>Welcome to the error fare website </h1>
+</center>
 
 <html>
-<head>
-<style>
-    body {
-      background-image: url("plane.jpg");
-      background-color: #501594;
-    }
-</style>
+<center>
+
+  <head>
+    <style>
+      body {
+        background-image: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+
+      }
+    </style>
+
+    <form method="post" , action="/">
+      To <input id="search" name="destination" placeholder="Destination" type="text" name="city" list="airports">
+      <datalist id="airports">
+        {% for item in fileData %}
+        <option value={{item.iata}}>{{item.name}}</option>
+        {% endfor %}
+      </datalist>
+
+      </br>
 
 
-To <input id="search" name="destination" placeholder="Destination" type="text" name="city" list="airports">
-<datalist id="airports"> 
-  {% for item in fileData %}
-  <option value={{item.iata}}>{{item.name}}</option>
-  {% endfor %}
-</datalist>
+      From<input id="search" name="origin" placeholder="Origin" type="text" name="city" list="airports">
+      <datalist id="airports">
+        {% for item in fileData %}
+        <option value={{item.iata}}>{{item.name}}</option>
+        {% endfor %}
+      </datalist>
 
+      </br>
 
+      <div id="match-list"></div>
 
+      Depart <input type="date" name="departureDate" id="txtDepart" required>
 
-From<input id="search" name="origin" placeholder="origin" type="text" name="city" list="airports">
-<datalist id="airports"> 
-  {% for item in fileData %}
-  <option value={{item.iata}}>{{item.name}}</option>
-  {% endfor %}
-</datalist>
+      </br>
 
+      Return <input type="date" name="returnDate" id="txtReturn" required>
 
-<div id="match-list"></div>
+      </br>
 
-Depart <input type="date" name="departureDate" id = "txtDepart"  required >
+      Class <select name="class" id="txtClass">
+        <option selected value="Economy">Economy</option>
+        <option value="Premium_Economy">Premium Economy</option>
+        <option value="Business">Business Class</option>
+        <option value="First">First Class</option>
+      </select>
 
-Return <input type="date" name="returnDate" id = "txtReturn"  required>
+      </br>
 
-Class <select name="class" id="txtClass" >
-    <option selected value="Economy">Economy</option>
-    <option value="Premium_Economy">Premium Economy</option>
-    <option value="Business">Business Class</option>
-    <option value="First">First Class</option>
-    
-    
-  </select>
-  
+      Budget <input type="number" name="budget" value="" id="txtBudget" placeholder="Enter your budget">
 
+      </br>
 
-Budget <input type="number" name="budget" value ="" id = "txtBudget" placeholder="Enter your budget"> 
+      <input type="submit" name="submit" value="Submit" id="txtSubmit">
 
+    </form>
+  </head>
+</center>
 
-
-
-
-<p>
-<input type="submit" name="submit" value="Submit" id = "txtSubmit" >
-
-</p>
-
-
-
-</head>
 </html>
-
-
-
