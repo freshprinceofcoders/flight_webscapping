@@ -22,7 +22,10 @@ def index():
 @app.route('/', methods=['POST'])
 def formSubmit():
     response = getFlightData(request.form)
+    #print("response 2")
     print(response)
+    if response == "Prices not found":
+        return render_template('search_result_empty.html', result_data=response)
     return render_template('search_result.html', result_data=response)
 
 

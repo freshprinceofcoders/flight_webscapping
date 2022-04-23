@@ -26,10 +26,14 @@ def getFlightData(inputData):
 
     response = requests.get(url)
 
-    print("Flight api response: ")
+    print("Flight api response: 1 ")
     print(response)
     the_info = response.json()
-    options = the_info['fares']
+    #print (the_info)
+    if the_info['success'] == True:
+        options = the_info['fares']
+    else:
+        options = []
 
     results = ""
     for option in options:
