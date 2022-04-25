@@ -9,7 +9,7 @@ from flight_fare import FlightFare
 
 def getFlightData(inputData):
 
-    print(inputData)
+    print(inputData)#this gets all the data from the html to parse to the API
     source = inputData['origin']
     destination = inputData['destination']
     departureDate = inputData['departureDate']
@@ -17,28 +17,25 @@ def getFlightData(inputData):
     seatType = inputData['class']
     budget = inputData['budget']
 
-    # fileObj = open(fileName, "r") #opens the file in read mode
-    # user_input = fileObj.read().splitlines() #puts the file into an array
-    # fileObj.close()
 
-    #url = f"https://api.flightapi.io/{trip}/620fd0a4853d6d634dae50e2/{source}/{destination}/{departureDate}/2/0/1/{seatType}/GBP"
-    url = f"https://api.flightapi.io/roundtrip/620fd0a4853d6d634dae50e2/{source}/{destination}/{departureDate}/{returnDate}/1/0/0/{seatType}/GBP"
 
-    response = requests.get(url)
+    url = f"https://api.flightapi.io/roundtrip/620fd0a4853d6d634dae50e2/{source}/{destination}/{departureDate}/{returnDate}/1/0/0/{seatType}/GBP" #This sends the information to the API so that it can get the flight data from it and return it to the user 
+
+    response = requests.get(url)#returns the result of the API 
 
     print("Flight api response: 1 ")
-    print(response)
+    print(response)#gets a response of 200
     the_info = response.json()
     #print (the_info)
-    if the_info['success'] == True:
+    if response.status_code == 200:#this will return the flight details if the route is available 
         options = the_info['fares']
     else:
-        options = []
+        options = []#will return nothing 
 
     results = ""
     for option in options:
 
-        if int(budget) >= option['price']['amount']:
+        if int(budget) >= option['price']['amount']:#This just checks if the amount returned is less than teh budget
             flight_fare = FlightFare(
                 option['price']['amount'], option['handoffUrl'])
             results += flight_fare.get_flight_price()
