@@ -1,4 +1,4 @@
-alert('This is a message')
+/*alert('This is a message')
 
 
 const search = document.getElementById('search')
@@ -51,3 +51,4 @@ search.addEventListener('input', () => searchAirports(search.value));
 //<div class="card card-body mb-1">
 
 //</div>  
+/*
